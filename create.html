@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <!-- bootstrap css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- bootstrap icon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <style>
+        #short_sidebar{
+            width: 20px;
+            box-shadow: 0px 0px 10px gray;
+            height: 100vh; 
+            position: fixed; 
+            left: 0;
+            top: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        @media screen  and (max-width: 991px){
+            #short_sidebar{ display: none !important; }
+        }
+        /* LINK ACTIVE HOVER START */
+        .dropdown-item.active, .dropdown-item:active {
+            color: blue;
+            text-decoration: none;
+            font-weight: bold;
+            background-color: transparent;
+        }
+        .navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
+            color: blue;
+            font-weight: bold;
+        }
+        .dropdown-item:focus, .dropdown-item:hover {
+            color: blue;
+            background-color: transparent;
+            font-weight: bold;
+            transition: .7s;
+        }
+        .nav-link:focus, .nav-link:hover {
+            color: blue;
+            font-weight: bold;
+            transition: .7s;
+        }
+        .nav-link i, .dropdown-item i {
+            display: none;
+        }
+        .nav-link.active i, .dropdown-item.active i{
+            display: inline;
+            padding-right: 10px;
+        }
+        .nav-link:hover i, .dropdown-item:hover i{
+            display: inline;
+            padding-right: 10px;
+            transition: .7s;
+        }
+        /* LINK ACTIVE HOVER END */
+
+        /* CARD START */
+        .myCard{
+            text-align: center;
+            padding: 20px 0px;
+            box-shadow: 0px 0px 5px gray;
+        }
+        .myCard:hover{
+            cursor: pointer;
+            background: rgb(229, 229, 255);
+            transition: .5s;
+        }
+        .myCard i{
+            font-size: 33px;
+        }
+        /* CARD END */
+
+        /* TABLE START */
+        .armanTableContainer{
+            width: 100% !important;
+            max-height: fit-content !important;
+            box-shadow: 0px 0px 5px gray;
+        }
+        .armanTableFixed{
+            overflow-x: scroll !important;
+            overflow-y: scroll !important;
+            height: fit-content !important;
+            height: 70vh !important;
+        }
+        .armanTable{
+            min-width: max-content !important;
+            border-collapse: separate !important;
+            font-size:14px !important;
+        }
+        .armanTable th{
+            position: sticky !important;
+            top: 0px !important;
+            background-color: white !important;
+        }
+        .armanTable tr td, tr th{
+            padding: 0px 5px;
+        }
+        td a{
+            padding: 0px 5px !important;
+        }
+        /* TABLE END */
+    </style>
+
+  </head>
+  <body>
+    <!-- SIDEBAR -->
+    <nav class="navbar bg-body-tertiary fixed-top">
+        <div class="container-fluid">
+          <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+              <a class="navbar-brand fw-bold" href="#">
+                    <i class="bi bi-house-fill fs-4 pe-2"></i>
+                    <!-- <img width="25" height="25" class="d-inline-block align-text-top me-2 rounded bg-dark"> -->
+                    My Dashboard
+              </a>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 ps-5 pb-5">
+
+                <li class="nav-item">
+                  <a class="nav-link " aria-current="page" href="./dashboard.html">
+                    <i class="bi bi-caret-right-fill"></i>
+                    Dashboard
+                </a>
+                </li>
+                <li class="nav-item"> 
+                    <a class="nav-link " href="./demo.html">
+                        <i class="bi bi-caret-right-fill"></i>
+                        Demo
+                    </a> 
+                </li>
+
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Dropdown
+                  </a>
+                  <ul class="dropdown-menu border-0 show">
+                    <li>
+                        <a class="dropdown-item " href="./index2.html">
+                            <i class="bi bi-caret-right-fill"></i>
+                            Index
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item active" href="./create.html">
+                            <i class="bi bi-caret-right-fill"></i>
+                            Create
+                        </a>
+                    </li>
+                  </ul>
+                </li>
+    
+              </ul>
+              <!-- <form class="d-flex mt-3" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+              </form> -->
+            </div>
+          </div>
+        </div>
+    </nav>
+
+    <!-- TOPBAR -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top" style="box-shadow: 0px 0px 10px gray;">
+        <div class="container">
+          <a class="navbar-toggler px-1 py-0 mt-2" data-bs-toggle="offcanvas" href="#offcanvasNavbar" role="button" aria-controls="offcanvasNavbar">
+            <!-- <span class="navbar-toggler-icon"></span> -->
+            <i class="bi bi-list fs-1"></i>
+          </a>
+          <a class="navbar-brand fw-bold" href="#">
+            <i class="bi bi-house-fill fs-4 pe-2"></i>
+            <!-- <img width="25" height="25" class="d-inline-block align-text-top me-2 rounded bg-dark"> -->
+            My Dashboard
+          </a>
+
+          <button class="navbar-toggler px-1 py-0 mt-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <!-- <span class="navbar-toggler-icon"></span> -->
+            <i class="bi bi-list fs-1"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link " aria-current="page" href="./index.html">Home</a>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Arman 
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item " href="./profile.html">Profile</a></li>
+                  <li><a class="dropdown-item " href="./setting.html">Settings</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="./index.html">Logout</a></li>
+                </ul>
+              </li>
+            </ul>
+            <!-- <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form> -->
+          </div>
+        </div>
+    </nav>
+
+    <a class="navbar-toggler" data-bs-toggle="offcanvas" href="#offcanvasNavbar" role="button" aria-controls="offcanvasNavbar">
+        <div id="short_sidebar" class="bg-light">
+                <i class="bi bi-caret-right-fill"></i>
+        </div>
+    </a>
+
+    <div class="container-fluid py-3 ps-md-5 pe-md-4">
+
+        <!-- DASHBOARD CREATE -->
+        <div class="row justify-content-center pb-4">
+            <div class="col-md-6">
+                <style>
+                    form input{
+                        margin-top: 10px;
+                        margin-bottom: 20px;
+                    }
+                    .myForm{
+                        padding: 20px 20px;
+                        box-shadow: 0px 0px 5px gray;
+                    }
+                </style>
+                <form action="" method="" class="card myForm">
+                    <div class="row">
+
+                        <div class="col-12 text-center fs-3 pb-3 text-decoration-underline">
+                            My Form
+                        </div>
+                        <div class="col-md-6">
+                            <label>Name :</label>
+                            <input type="text" name="" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label>Mobile :</label>
+                            <input type="text" name="" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label>Name :</label>
+                            <input type="text" name="" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label>Mobile :</label>
+                            <input type="text" name="" class="form-control">
+                        </div>
+                        <div class="col-12 text-center">
+                            <button type="" class="btn btn-success px-5">Submit</button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <!-- bootstrap js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  </body>
+</html>
